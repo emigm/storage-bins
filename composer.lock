@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "43da687783cb64cd517ccd219b20eb0a",
-    "content-hash": "2a855b1a23790e0ce43d7436838c77d1",
+    "hash": "04bcdf11323df205904686f1f70feb01",
+    "content-hash": "1752c64e7e638255eb8ecb24ffd9dcd3",
     "packages": [],
     "packages-dev": [
         {
@@ -63,7 +63,7 @@
             "time": "2015-06-14 21:17:01"
         },
         {
-            "name": "fabpot/php-cs-fixer",
+            "name": "friendsofphp/php-cs-fixer",
             "version": "v1.11.3",
             "source": {
                 "type": "git",
@@ -114,7 +114,6 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "abandoned": "friendsofphp/php-cs-fixer",
             "time": "2016-05-26 23:49:24"
         },
         {
@@ -1399,7 +1398,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "phpunit/phpunit": 0,
-        "fabpot/php-cs-fixer": 0
+        "friendsofphp/php-cs-fixer": 0
     },
     "prefer-stable": true,
     "prefer-lowest": false,

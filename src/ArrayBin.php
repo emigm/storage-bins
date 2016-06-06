@@ -42,7 +42,7 @@ class ArrayBin
     private function camelCaseToUnderscore($input)
     {
         return strtolower(
-            preg_replace(['/([a-z\d])([A-Z])/', '/([^_])([A-Z][a-z])/'], '$1_$2', $input)
+            preg_replace(['/([a-z])([A-Z\d])/', '/([^_])([A-Z][a-z])/'], '$1_$2', $input)
         );
     }
 

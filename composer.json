@@ -25,17 +25,17 @@
         "php" : ">=5.4.0"
     },
     "require-dev" : {
-        "phpunit/phpunit"     : "@stable",
-        "fabpot/php-cs-fixer" : "@stable"
+        "phpunit/phpunit"           : "@stable",
+        "friendsofphp/php-cs-fixer" : "@stable"
     },
     "autoload" : {
         "psr-4" : {
-            "StorageBins" : "src/"
+            "StorageBins\\" : "src/"
         }
     },
     "autoload-dev" : {
         "psr-4" : {
-            "StorageBins" : "tests/unit/"
+            "StorageBins\\" : "tests/unit/"
         }
     }
 }
