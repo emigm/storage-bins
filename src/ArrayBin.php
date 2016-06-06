@@ -33,20 +33,20 @@ class ArrayBin
 
             $attribute_value = $this->array[$attribute_nane];
 
-            return (is_array($attribute_value))
-                ? new ArrayContainer($attribute_value)
+            return ($this->isAssociativeArray($attribute_value))
+                ? new ArrayBin($attribute_value, $this->is_camelcase)
                 : $attribute_value;
         }
     }
 
-    private function camelCaseToUnderscore($input)
+    protected function camelCaseToUnderscore($input)
     {
         return strtolower(
             preg_replace(['/([a-z])([A-Z\d])/', '/([^_])([A-Z][a-z])/'], '$1_$2', $input)
         );
     }
 
-    private function underscoreToCamelCase($input, $capitalize_first_char = false)
+    protected function underscoreToCamelCase($input, $capitalize_first_char = false)
     {
         $camelcase = str_replace(' ', '', ucwords(str_replace('_', ' ', $input)));
 
@@ -55,5 +55,10 @@ class ArrayBin
         }
 
         return $camelcase;
+    }
+
+    protected function isAssociativeArray($array)
+    {
+        return is_array($array) AND array_keys($array) !== range(0, count($array) - 1);
     }
 }
