@@ -1,0 +1,41 @@
+{
+    "name"        : "emigm/storage-bins",
+    "description" : "Storage bins enable to treat arrays as objects",
+    "type"        : "library",
+    "license"     : "MIT",
+    "keywords"    : [
+        "storage-bins",
+        "bin",
+        "array",
+        "json",
+        "container"
+    ],
+    "authors" : [
+        {
+            "name"  : "Emiliano G. Molina",
+            "email" : "emiliano.g.molina@gmail.com"
+        }
+    ],
+    "support" : {
+        "issues" : "https://github.com/emigm/storage-bins/issues"
+    },
+    "prefer-stable"     : true,
+    "minimum-stability" : "dev",
+    "require"           : {
+        "php" : ">=5.4.0"
+    },
+    "require-dev" : {
+        "phpunit/phpunit"     : "@stable",
+        "fabpot/php-cs-fixer" : "@stable"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "StorageBins" : "src/"
+        }
+    },
+    "autoload-dev" : {
+        "psr-4" : {
+            "StorageBins" : "tests/unit/"
+        }
+    }
+}
