@@ -4,11 +4,10 @@ namespace StorageBins;
 
 use PHPUnit_Framework_TestCase;
 
-class ArrayBinTest extends PHPUnit_Framework_TestCase
+class JSONBinTest extends PHPUnit_Framework_TestCase
 {
-    private $camel_case_array;
-    private $snake_case_array;
-    private $nested_array;
+    private $json;
+    private $nested_json;
 
     public function setUp()
     {
@@ -35,16 +34,16 @@ class ArrayBinTest extends PHPUnit_Framework_TestCase
         ];
     }
 
-    public function testCreateArrayBinSuccessfully()
+    public function testCreateJSONBinSuccessfully()
     {
-        $bin = new ArrayBin([]);
+        $bin = new JSONBin(json_encode([]));
 
-        $this->assertTrue($bin instanceof ArrayBin);
+        $this->assertTrue($bin instanceof JSONBin);
     }
 
-    public function testGetCamelCaseArrayAttributesSuccessfully()
+    public function testGetCamelCaseJSONAttributesSuccessfully()
     {
-        $bin = new ArrayBin($this->camel_case_array);
+        $bin = new JSONBin(json_encode($this->camel_case_array));
 
         $this->assertEquals($this->camel_case_array['key'], $bin->getKey());
         $this->assertEquals($this->camel_case_array['key1'], $bin->getKey1());
@@ -54,7 +53,7 @@ class ArrayBinTest extends PHPUnit_Framework_TestCase
 
     public function testGetSnakeCaseArrayAttributesSuccessfully()
     {
-        $bin = new ArrayBin($this->snake_case_array, false);
+        $bin = new JSONBin(json_encode($this->snake_case_array), false);
 
         $this->assertEquals($this->snake_case_array['key'], $bin->getKey());
         $this->assertEquals($this->snake_case_array['key_1'], $bin->getKey1());
@@ -64,7 +63,7 @@ class ArrayBinTest extends PHPUnit_Framework_TestCase
 
     public function testGetNestedArrayAttributeSuccessfully()
     {
-        $bin = new ArrayBin($this->nested_array, false);
+        $bin = new JSONBin(json_encode($this->nested_array), false);
 
         $this->assertEquals(
             $this->nested_array['key_a']['key_b']['key_c'],
@@ -75,9 +74,9 @@ class ArrayBinTest extends PHPUnit_Framework_TestCase
     /**
      * @expectedException \BadMethodCallException
      */
-    public function testGetUndefinedArrayAttributeRaiseBadMethodCallException()
+    public function testGetUndefinedJSONAttributeRaiseBadMethodCallException()
     {
-        $bin = new ArrayBin($this->snake_case_array, false);
+        $bin = new JSONBin(json_encode($this->snake_case_array), false);
 
         $bin->getUndefined();
     }
