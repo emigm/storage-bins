@@ -34,14 +34,22 @@ class JSONBinTest extends PHPUnit_Framework_TestCase
         ];
     }
 
-    public function testCreateJSONBinSuccessfully()
+    public function testCreateJsonBinSuccessfully()
     {
         $bin = new JSONBin(json_encode([]));
 
         $this->assertTrue($bin instanceof JSONBin);
     }
 
-    public function testGetCamelCaseJSONAttributesSuccessfully()
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testCreateJsonBinWithInvalidJSONRaiseInvalidArgumentException()
+    {
+        new JSONBin('{');
+    }
+
+    public function testGetCamelCaseJsonAttributesSuccessfully()
     {
         $bin = new JSONBin(json_encode($this->camel_case_array));
 
@@ -51,7 +59,7 @@ class JSONBinTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->camel_case_array['keyArr'], $bin->getKeyArr());
     }
 
-    public function testGetSnakeCaseArrayAttributesSuccessfully()
+    public function testGetSnakeCaseJsonAttributesSuccessfully()
     {
         $bin = new JSONBin(json_encode($this->snake_case_array), false);
 
@@ -61,7 +69,7 @@ class JSONBinTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->snake_case_array['key_arr'], $bin->getKeyArr());
     }
 
-    public function testGetNestedArrayAttributeSuccessfully()
+    public function testGetNestedJsonAttributeSuccessfully()
     {
         $bin = new JSONBin(json_encode($this->nested_array), false);
 
@@ -74,7 +82,7 @@ class JSONBinTest extends PHPUnit_Framework_TestCase
     /**
      * @expectedException \BadMethodCallException
      */
-    public function testGetUndefinedJSONAttributeRaiseBadMethodCallException()
+    public function testGetUndefinedJsonAttributeRaiseBadMethodCallException()
     {
         $bin = new JSONBin(json_encode($this->snake_case_array), false);
 
