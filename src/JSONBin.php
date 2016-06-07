@@ -9,7 +9,7 @@ class JSONBin extends ArrayBin
         $decoded_json = json_decode($json, true);
 
         if (is_null($decoded_json)) {
-            throw new \InvalidArgumentException('$json is not a valid JSON');
+            throw new \InvalidArgumentException('Invalid JSON');
         }
 
         parent::__construct($decoded_json, $is_camelcase);
