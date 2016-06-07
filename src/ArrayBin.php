@@ -15,6 +15,9 @@ class ArrayBin
         $this->is_camelcase = $is_camelcase;
     }
 
+    /**
+     * @return mixed
+     */
     public function __call($name, $arguments)
     {
         $result = preg_match(self::GETTER_REGEX, $name, $matches);
